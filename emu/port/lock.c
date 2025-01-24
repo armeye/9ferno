@@ -2,8 +2,6 @@
 #include	"fns.h"
 #include	"error.h"
 
-extern void	(*coherence)(void);
-
 void
 lock(Lock *l)
 {
@@ -36,7 +34,6 @@ canlock(Lock *l)
 void
 unlock(Lock *l)
 {
-	coherence();
 	l->val = 0;
 }
 

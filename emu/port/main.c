@@ -7,7 +7,6 @@
 #include	"version.h"
 
 #define DP if(1){}else print
-void	(*coherence)(void) = nil;	/* used by port/lock.c and port/win-x11a.c */
 int	exdebug = 0;
 int		rebootargc = 0;
 char**		rebootargv;
@@ -231,21 +230,12 @@ putenvqv(char *name, char **v, int n, int conf)
 }
 
 void
-nofence(void)
-{
-	int i;
-	USED(i);
-}
-
-void
 main(int argc, char *argv[])
 {
 	char *opt, *p;
 	char *enva[20];
 	int envc;
 
-	if(coherence == nil)
-		coherence = nofence;
 	quotefmtinstall();
 	savestartup(argc, argv);
 	/* set default root now, so either $EMU or -r can override it later */

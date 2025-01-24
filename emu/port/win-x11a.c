@@ -37,6 +37,7 @@
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
+#include <X11/XKBlib.h>
 #include <X11/extensions/XShm.h>
 
 #include "keysym2ucs.h"
@@ -1209,14 +1210,12 @@ xkeyboard(XEvent *e)
 	ind = 0;
 	if(md & ShiftMask)
 		ind = 1;
-	if(0){
-		k = XKeycodeToKeysym(e->xany.display, (KeyCode)e->xkey.keycode, ind);
 
-		/* May have to try unshifted version */
-		if(k == NoSymbol && ind == 1)
-			k = XKeycodeToKeysym(e->xany.display, (KeyCode)e->xkey.keycode, 0);
-	}else
-		XLookupString((XKeyEvent*)e, NULL, 0, &k, NULL);
+	k = XkbKeycodeToKeysym(e->xany.display, (KeyCode)e->xkey.keycode, 0, ind);
+	/* May have to try unshifted version */
+	if(k == NoSymbol && ind == 1)
+		k = XkbKeycodeToKeysym(e->xany.display, (KeyCode)e->xkey.keycode, 0, 0);
+
 
 	if(k == XK_Multi_key || k == NoSymbol)
 		return;

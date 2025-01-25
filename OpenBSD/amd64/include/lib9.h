@@ -369,6 +369,7 @@ extern	void	wunlock(RWLock*);
 #define	MCREATE	0x0004	/* permit creation in mounted directory */
 #define	MCACHE	0x0010	/* cache some data */
 #define	MMASK	0x0017	/* all bits on */
+#define	MQUIET	0x0020  /* only for kbind. to shut it up */
 
 #define	OREAD	0	/* open for read */
 #define	OWRITE	1	/* write */

@@ -303,12 +303,12 @@ emuinit(void *imod)
 	kbind("#c", "/dev", MBEFORE);
 	kbind("#p", "/prog", MREPL);
 	kbind("#d", "/fd", MREPL);
-	kbind("#I", "/net", MAFTER);	/* will fail on Plan 9 */
+	kbind("#I", "/net", MAFTER|MQUIET);	/* will fail on Plan 9 */
 
 	/* BUG: we actually only need to do these on Plan 9 */
-	kbind("#U/dev", "/dev", MAFTER);
-	kbind("#U/net", "/net", MAFTER);
-	kbind("#U/net.alt", "/net.alt", MAFTER);
+	kbind("#U/dev", "/dev", MAFTER|MQUIET);
+	kbind("#U/net", "/net", MAFTER|MQUIET);
+	kbind("#U/net.alt", "/net.alt", MAFTER|MQUIET);
 
 	if(cputype != nil)
 		ksetenv("cputype", cputype, 1);

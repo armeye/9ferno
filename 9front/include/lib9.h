@@ -12,5 +12,6 @@ typedef usize size_t;
 
 #define	setbinmode()
 #define	USE_FPdbleword
+#define	MQUIET 0x0020 /* only for kbind. to shut it up */
 
 #define	DBG	if(debug)print

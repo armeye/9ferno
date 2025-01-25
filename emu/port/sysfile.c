@@ -438,12 +438,12 @@ kbind(char *new, char *old, int flags)
 
 	c0.c = nil;
 	if(waserror()) {
-		print("kbind error new %s\n", new);
+		if((flags & MQUIET) == 0)print("kbind error new %s\n", new);
 		cclose(c0.c);
 		return -1;
 	}
 	c0.c = namec(new, Abind, 0, 0);
-	r = bindmount(c0.c, old, flags, "");
+	r = bindmount(c0.c, old, flags & ~MQUIET, "");
 	poperror();
 	cclose(c0.c);
 	return r;

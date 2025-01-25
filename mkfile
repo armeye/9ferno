@@ -67,7 +67,6 @@ cleandist:V: clean
 	rm -f $ROOT/$OBJDIR/lib/lib*.a
 
 nukedist:V: nuke
-	rm -f $ROOT/$OBJDIR/bin/*.exe
 	rm -f $ROOT/$OBJDIR/lib/lib*.a
 	
 &-Posix:QV:
@@ -76,13 +75,6 @@ nukedist:V: nuke
 		echo "(cd $j; mk $MKFLAGS $stem)"
 		(cd $j; mk $MKFLAGS $stem) || exit 1
 	done
-
-&-Nt:QV:
-	for (j in $DIRS utils tools)
-	{
-		echo '@{builtin cd' $j '; mk $MKFLAGS $stem}'
-		@{builtin cd $j; mk.exe $MKFLAGS $stem }
-	}
 
 &-Inferno:QV:
 	for (j in $DIRS utils)
@@ -167,9 +159,6 @@ Plan9-% plan9-%:V:
 
 9front-% 9front-%:V:
 	mk 'SYSHOST=9front' 'OBJTYPE=amd64' $stem
-
-Irix-% irix-%:V:
-	mk 'SYSHOST=Irix' 'OBJTYPE=mips' $stem
 
 Linux-% linux-%:V:
 	mk 'SYSHOST=Linux' 'OBJTYPE=386' $stem

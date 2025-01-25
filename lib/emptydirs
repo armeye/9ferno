@@ -1,9 +1,6 @@
 9front/amd64/bin
 9front/amd64/include
 9front/amd64/lib
-AIX/power/bin
-AIX/power/include
-AIX/power/lib
 FreeBSD/386/bin
 FreeBSD/386/include
 FreeBSD/386/lib
@@ -39,9 +36,6 @@ Inferno/thumb/bin
 Inferno/thumb/lib
 Inferno/sys
 Inferno/wrap
-Irix/mips/bin
-Irix/mips/include
-Irix/mips/lib
 Linux/386/bin
 Linux/386/include
 Linux/386/lib
@@ -52,12 +46,6 @@ Linux/power/bin
 Linux/power/lib
 Linux/spim/bin
 Linux/spim/lib
-MacOSX/386/bin
-MacOSX/386/include
-MacOSX/386/lib
-MacOSX/power/bin
-MacOSX/power/include
-MacOSX/power/lib
 NetBSD/386/bin
 NetBSD/386/include
 NetBSD/386/lib

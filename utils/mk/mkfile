@@ -1,11 +1,9 @@
-MKAR=	archive
-
 <../../mkconfig
 
 TARG=mk
 
 OFILES=	arc.$O\
-	$MKAR.$O\
+	archive.$O\
 	bufblock.$O\
 	env.$O\
 	file.$O\

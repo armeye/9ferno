@@ -64,7 +64,6 @@ NetBSD/386/lib
 NetBSD/power/bin
 NetBSD/power/include
 NetBSD/power/lib
-Nt/386/lib
 OpenBSD/386/bin
 OpenBSD/386/include
 OpenBSD/386/lib

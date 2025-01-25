@@ -27,7 +27,7 @@ ALWAYS=\
 	nm\
 
 #
-#	Utils we build on Posix and Nt, which already exist on Plan 9.
+#	Utils we build on Posix, which already exist on Plan 9.
 #
 NOTPLAN9=\
 	5a\
@@ -51,23 +51,6 @@ NOTPLAN9=\
 	md5sum\
 	mkext\
 	ndate\
-
-#
-#	Utils we build on Nt, for build environment compatibility.
-#
-NTONLY=\
-	cat\
-	cp\
-	echo\
-	format\
-	mkdir\
-	mv\
-	ntsrv\
-	rcsh\
-	rm\
-	sed\
-	test\
-	tr\
 
 #
 # Thumb-1
@@ -108,12 +91,3 @@ nuke:QV:	nuke-$TARGMODEL
 		echo "(cd $j; mk $MKFLAGS $stem)"
 		(cd $j; mk $MKFLAGS $stem) || exit 1
 	done
-
-%-Nt:QV:
-	for (j in  $ALWAYS $NTONLY $NOTPLAN9)
-	{
-		test -d $j && {
-			echo.exe '@{cd' $j '; mk $MKFLAGS $stem}'
-			@{cd $j; mk $MKFLAGS $stem }
-		} || test ! -e $j
-	}

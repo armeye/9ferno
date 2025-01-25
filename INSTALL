@@ -21,8 +21,7 @@ threads efficiently.
 
      There  are  working  emu  versions   for   FreeBSD/386,
 Irix/mips,  Linux/386, NetBSD/386, MacOSX/386, MacOSX/power,
-Plan 9, Solaris/sparc, and Windows (NT,  2000  and  Explorer
-plug-in).   Each platform typically uses mechanisms specific
+Plan 9, Solaris/sparc.  Each platform typically uses mechanisms specific
 to the host operating system to implement Inferno's internal
 thread/process  structure.   POSIX  threads  have often been
 found to be insufficient (poorly implemented) on some  plat-
@@ -39,16 +38,6 @@ built on any processor type, in the usual way for Plan 9.
 
      Otherwise, as distributed,  emu for a platform can only
 be built when running on that platform.
-
-     One unusual variant makes the whole of Inferno a  plug-
-in  for Microsoft's Internet Explorer, giving the same envi-
-ronment for Inferno applications running in an HTML page  as
-is  provided by hosted or native Inferno.  That is, there is
-not a distinct `applet' environment with special programming
-interfaces.   The  source for the various plug-in components
-is found in  /tools/plugin and    /usr/internet  within  the
-Inferno  tree;  they  use the version of  emu defined by the
-configuration file  /emu/Nt/ie.
 
 Build steps
 
@@ -81,21 +70,11 @@ following in the root of the Inferno tree:
      a  plain   mk will not suffice, because it does not put
      the results in the search path.)
 
-Doing something similar  on  Windows  or  Plan  9  currently
+Doing something similar  on  Plan  9  currently
 requires  the  executable  for    mk  to be available in the
 search path, since there is no  equivalent  of    makemk.sh.
 Otherwise  the procedure is the same.  On Plan 9, of course,
 the host system's normal version of  mk should be adequate.
-
-To build hosted Inferno for Windows/Nt you will need Microsoft Visual Studio installed. Then from the Inferno source root do:
-
-1    Edit mkconfig
-
-2    Add $INFERNO/Nt/386/bin to Path
-
-3    Start Developer Command Prompt
-
-4    `mk install`
 
 Inferno can also be built with the provided Dockerfile:
 1    `docker build -t purgatorio .`
@@ -106,5 +85,5 @@ This will build Inferno on a small Linux base. Note that Docker sandboxes networ
 
 `docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" purgatorio emu wm/wm`
 
-This works on Linux. On Windows and MacOS you would need some kind of custom Xserver setup to make this work. Option include vcxsrv on Windows and XQuartz on MacOS. 
+This works on Linux. On MacOS you would need some kind of custom Xserver setup to make this work. Options include XQuartz on MacOS. 
 

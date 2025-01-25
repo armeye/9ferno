@@ -112,13 +112,6 @@ emu/&-Posix:QV:
 		(cd $j; mk $MKFLAGS $stem) || exit 1
 	done
 
-emu/&-Nt:QV:
-	for (j in $EMUDIRS)
-	{
-		echo '@{builtin cd' $j '; mk $MKFLAGS $stem}'
-		@{builtin cd $j; mk $MKFLAGS $stem }
-	}
-
 emu/&-Plan9:QV:
 	for (j in $EMUDIRS)
 	{
@@ -139,13 +132,6 @@ kernel/&-Posix:QV:
 		echo "(cd $j; mk $MKFLAGS $stem)"
 		(cd $j; mk $MKFLAGS $stem) || exit 1
 	done
-
-kernel/&-Nt:QV:
-	for (j in $KERNEL_DIRS)
-	{
-		echo '@{builtin cd' $j '; mk $MKFLAGS $stem}'
-		@{builtin cd $j; mk $MKFLAGS $stem }
-	}
 
 kernel/&-Inferno:QV:
 	for (j in $KERNEL_DIRS)
@@ -191,9 +177,6 @@ Linux-% linux-%:V:
 NetBSD-% netbsd-%:V:
 	mk 'SYSHOST=NetBSD' 'OBJTYPE=386' $stem
 
-Nt-% nt-% Win95-% win95-%:V:
-	mk 'SYSHOST=Nt' 'OBJTYPE=386' $stem
-
 Solaris-% solaris-%:V:
 	mk 'SYSHOST=Solaris' 'OBJTYPE=sparc' $stem
 
@@ -206,9 +189,6 @@ mkdirs-rc:V:
 mkdirs-sh:V:
 	mkdir -p `cat lib/emptydirs`
 	chmod 555 mnt/* n/client/* n/*
-
-mkdirs-nt:V:
-	mkdir -p `{cmd /c type lib\emptydirs}
 
 # got the below ideas from plan9front/sys/lib/dist/mkfile
 #	can only be used on 9front. should technically work on plan9 and inferno too.

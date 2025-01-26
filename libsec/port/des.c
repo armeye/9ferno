@@ -471,7 +471,7 @@ des64to56(uchar *k64, uchar *k56)
 }
 
 void
-key_setup(uchar key[7], uint *ek)
+key_setup(uchar key[7], u32 *ek)
 {
 	uchar k64[8];
 

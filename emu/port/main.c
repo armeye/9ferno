@@ -453,7 +453,7 @@ _assert(char *fmt)
 /*
  * mainly for libmp
  */
-void
+_Noreturn void
 sysfatal(char *fmt, ...)
 {
 	va_list arg;

@@ -78,7 +78,7 @@ port
 	print
 	proc
 	qio
-	random
+#	random
 	sysfile
 	uqid
 

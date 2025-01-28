@@ -167,7 +167,6 @@ consinit(void)
 	gkbdq = qopen(512, 0, nil, nil);
 	if(gkbdq == 0)
 		panic("no memory");
-	randominit();
 }
 
 /*
@@ -300,8 +299,6 @@ consread(Chan *c, void *va, long n, vlong offset)
 		return readstr(offset, va, n, ossysname);
 
 	case Qrandom:
-		return randomread(va, n);
-
 	case Qnotquiterandom:
 		genrandom(va, n);
 		return n;
@@ -599,7 +596,7 @@ static	ulong	randn;
 static void
 seedrand(void)
 {
-	randomread((void*)&randn, sizeof(randn));
+	randn = truerand();
 }
 
 int
@@ -618,11 +615,3 @@ rand(void)
 	return randn;
 }
 
-ulong
-truerand(void)
-{
-	ulong x;
-
-	randomread(&x, sizeof(x));
-	return x;
-}
